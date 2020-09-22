@@ -31,4 +31,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TranslateButton"
         android:id="@+id/TranslatedPhoneword" />
+    <Button
+        android:text="Update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TranslatedPhoneword"
+        android:id="@+id/updateButton" />
+    <Button
+        android:text="Download my Japanese App"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/updateButton"
+        android:id="@+id/DownloadJapaneseAppBtn" />
+    <TextView
+        android:text="You thought it was an update, But it was me DIO!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DownloadJapaneseAppBtn"
+        android:id="@+id/textView2" />
 </RelativeLayout>

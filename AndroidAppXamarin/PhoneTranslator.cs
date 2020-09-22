@@ -1,5 +1,8 @@
 ﻿using System.Text;
 using System;
+using Android.App.Admin;
+using Xamarin.Essentials;
+
 namespace Core{
     public static class PhonewordTranslator{
         public static string ToNumber(string raw){
@@ -48,5 +51,9 @@ namespace Core{
                 return 9;
             return null;
         }
+    }
+
+    public static class UpdateApp { 
+        
     }
 }

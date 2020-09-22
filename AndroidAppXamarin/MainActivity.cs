@@ -3,6 +3,10 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Xamarin.Essentials;
+using Android.Net;
+using System;
+using Java.Net;
 
 namespace AndroidAppXamarin
 {
@@ -20,7 +24,8 @@ namespace AndroidAppXamarin
             EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
             TextView translatedPhoneWord = FindViewById<TextView>(Resource.Id.TranslatedPhoneword);
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
-
+            Button UpdateButton = FindViewById<Button>(Resource.Id.updateButton);
+            Button JapaneseBtn = FindViewById<Button>(Resource.Id.DownloadJapaneseAppBtn);
             // Add code to translate number
             translateButton.Click += (sender, e) =>
             {
@@ -36,6 +41,17 @@ namespace AndroidAppXamarin
                 }
             };
 
+
+
+            UpdateButton.Click += (sender, e) =>
+            {
+                Launcher.OpenAsync(new System.Uri("https://github.com/calebhk98/AndroidAppXamarin/raw/master/AndroidAppXamarin.AndroidAp.apk"));
+            };
+
+            JapaneseBtn.Click += (sender, e) =>
+            {
+                Launcher.OpenAsync(new System.Uri("https://github.com/calebhk98/JapaneseLearningApp/raw/master/com.companyname.japanese_learning.apk"));
+            };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -43,5 +59,10 @@ namespace AndroidAppXamarin
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    
+        
+    
+    
+    
     }
 }
