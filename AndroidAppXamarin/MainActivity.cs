@@ -7,6 +7,8 @@ using Xamarin.Essentials;
 using Android.Net;
 using System;
 using Java.Net;
+using System.Collections.Generic;
+using Android.Content;
 
 namespace AndroidAppXamarin
 {
@@ -15,6 +17,7 @@ namespace AndroidAppXamarin
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+             List<string> phoneNumbers = new List<string>();
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
@@ -26,11 +29,23 @@ namespace AndroidAppXamarin
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
             Button UpdateButton = FindViewById<Button>(Resource.Id.updateButton);
             Button JapaneseBtn = FindViewById<Button>(Resource.Id.DownloadJapaneseAppBtn);
+            Button translationHistoryButton = FindViewById<Button>(Resource.Id.TranslationHistoryButton);
+
+
+            translationHistoryButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(TranslationHistoryActivity));
+                intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
+                StartActivity(intent);
+            };
+
+
             // Add code to translate number
+            string translatedNumber = string.Empty;
             translateButton.Click += (sender, e) =>
             {
                 // Translate user's alphanumeric phone number to numeric
-                string translatedNumber = Core.PhonewordTranslator.ToNumber(phoneNumberText.Text);
+                translatedNumber = Core.PhonewordTranslator.ToNumber(phoneNumberText.Text);
                 if (string.IsNullOrWhiteSpace(translatedNumber))
                 {
                     translatedPhoneWord.Text = string.Empty;
@@ -38,6 +53,8 @@ namespace AndroidAppXamarin
                 else
                 {
                     translatedPhoneWord.Text = translatedNumber;
+                    phoneNumbers.Add(translatedNumber);
+                    translationHistoryButton.Enabled = true;
                 }
             };
 
