@@ -50,7 +50,7 @@ namespace AndroidAppXamarin
 
             JapaneseBtn.Click += (sender, e) =>
             {
-                Launcher.OpenAsync(new System.Uri("https://github.com/calebhk98/JapaneseLearningApp/raw/master/com.companyname.japanese_learning.apk"));
+                Launcher.OpenAsync(new System.Uri("https://github.com/calebhk98/JapaneseLearningApp/blob/master/com.companyname.japanese_learning.apk"));
             };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
